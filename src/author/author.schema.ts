@@ -9,6 +9,6 @@ export class Author {
   @Field()
   name: string;
 
-  @Field(() => [Book])
+  @Field(() => [Book], { nullable: true })
   books: Book[];
 }

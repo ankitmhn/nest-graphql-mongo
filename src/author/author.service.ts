@@ -8,6 +8,9 @@ export class AuthorService {
   constructor() {
     this.authors = authors;
   }
+  async findMany() {
+    return this.authors;
+  }
 
   async findById(id) {
     return this.authors.find((a) => a.id === id);

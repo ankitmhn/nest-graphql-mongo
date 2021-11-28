@@ -12,10 +12,21 @@ type Book {
 type Author {
   id: ID!
   name: String!
-  books: [Book!]!
+  books: [Book!]
 }
 
 type Query {
   authors: [Author!]!
   books: [Book!]!
+}
+
+type Mutation {
+  createBook(input: CreateBookInput!): Book!
+}
+
+input CreateBookInput {
+  id: ID!
+  title: String!
+  isbn: String!
+  author: Int!
 }

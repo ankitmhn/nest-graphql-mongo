@@ -18,9 +18,9 @@ export class BookService {
     return foundBooks.length ? foundBooks[0] : null;
   }
 
-  async findByAuthok(authorId: number) {
+  async findByAuthorId(authorId: number) {
     const foundBooks = this.books.filter((book) => book.author === authorId);
-    return foundBooks.length ? foundBooks[0] : null;
+    return foundBooks.length ? foundBooks : null;
   }
 
   async createBook(book: CreateBookInput) {
