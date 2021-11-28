@@ -2,12 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Author {
-  id: ID!
-  name: String!
-  books: [Book!]!
-}
-
 type Book {
   id: ID!
   title: String!
@@ -15,6 +9,13 @@ type Book {
   author: Author!
 }
 
+type Author {
+  id: ID!
+  name: String!
+  books: [Book!]!
+}
+
 type Query {
+  authors: [Author!]!
   books: [Book!]!
 }

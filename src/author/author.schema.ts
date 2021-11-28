@@ -4,7 +4,7 @@ import { Book } from 'src/book/book.schema';
 @ObjectType()
 export class Author {
   @Field(() => ID)
-  id: string;
+  id: number;
 
   @Field()
   name: string;
