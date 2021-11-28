@@ -18,6 +18,11 @@ type Author {
 type Query {
   authors: [Author!]!
   books: [Book!]!
+  book(input: FindBookInput!): Book
+}
+
+input FindBookInput {
+  id: Int!
 }
 
 type Mutation {

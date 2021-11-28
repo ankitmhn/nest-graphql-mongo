@@ -8,7 +8,7 @@ import {
 } from '@nestjs/graphql';
 import { Author } from 'src/author/author.schema';
 import { AuthorService } from 'src/author/author.service';
-import { Book, CreateBookInput } from './book.schema';
+import { Book, CreateBookInput, FindBookInput } from './book.schema';
 import { BookService } from './book.service';
 
 @Resolver(() => Book)
@@ -17,9 +17,15 @@ export class BookResolver {
     private bookService: BookService,
     private authorService: AuthorService,
   ) {}
+
   @Query(() => [Book])
   async books() {
     return this.bookService.findMany();
+  }
+
+  @Query(() => Book, { nullable: true })
+  async book(@Args('input') { id }: FindBookInput) {
+    return this.bookService.findById(id);
   }
 
   @Mutation(() => Book)
