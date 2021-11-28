@@ -1,4 +1,4 @@
-import { ObjectType, Field, ID, Int, InputType } from '@nestjs/graphql';
+import { ObjectType, Field, ID, InputType } from '@nestjs/graphql';
 import { Author } from 'src/author/author.schema';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
@@ -24,7 +24,7 @@ export class Book {
     ref: Author.name,
   })
   @Field(() => Author)
-  author: Author | number;
+  author: Author | string;
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book); //create the mongodb schema
@@ -34,7 +34,7 @@ BookSchema.index({ author: 1 });
 @InputType()
 export class CreateBookInput {
   @Field(() => ID)
-  id: number;
+  id: string;
 
   @Field()
   title: string;
@@ -42,12 +42,12 @@ export class CreateBookInput {
   @Field()
   isbn: string;
 
-  @Field(() => Int)
-  author: number;
+  @Field()
+  author: string;
 }
 
 @InputType()
 export class FindBookInput {
-  @Field(() => Int)
-  id: number;
+  @Field()
+  id: string;
 }

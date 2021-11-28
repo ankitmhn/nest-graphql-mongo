@@ -3,7 +3,7 @@
 # ------------------------------------------------------
 
 type Author {
-  id: ID!
+  _id: ID!
   name: String!
   books: [Book!]
 }
@@ -22,16 +22,21 @@ type Query {
 }
 
 input FindBookInput {
-  id: Int!
+  id: String!
 }
 
 type Mutation {
+  createAuthor(input: CreateAuthorInput!): Author!
   createBook(input: CreateBookInput!): Book!
+}
+
+input CreateAuthorInput {
+  name: String!
 }
 
 input CreateBookInput {
   id: ID!
   title: String!
   isbn: String!
-  author: Int!
+  author: String!
 }
