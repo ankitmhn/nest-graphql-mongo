@@ -21,7 +21,7 @@ export class Book {
   @Prop({
     required: true,
     type: mongoose.Schema.Types.ObjectId,
-    ref: Author.name,
+    ref: 'Author',
   })
   @Field(() => Author)
   author: Author | string;
@@ -29,13 +29,10 @@ export class Book {
 
 export const BookSchema = SchemaFactory.createForClass(Book); //create the mongodb schema
 
-BookSchema.index({ author: 1 });
+// BookSchema.index({ author: 1 });
 
 @InputType()
 export class CreateBookInput {
-  @Field(() => ID)
-  id: string;
-
   @Field()
   title: string;
 

@@ -35,7 +35,6 @@ input CreateAuthorInput {
 }
 
 input CreateBookInput {
-  id: ID!
   title: String!
   isbn: String!
   author: String!
